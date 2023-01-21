@@ -1,6 +1,6 @@
 import test from "ava"
 import { Kysely, PostgresDialect } from "kysely"
-import { KyselyDatabaseInstance } from "../src"
+import { AirbyteGithubKysely } from "../src"
 import { Pool } from "pg"
 
 test("quick type test", async (t) => {
@@ -8,7 +8,7 @@ test("quick type test", async (t) => {
     connectionString:
       "postgresql://readstuff:readstuff@github-db/postgres?sslmode=no-verify",
   })
-  const db: KyselyDatabaseInstance = new Kysely({
+  const db: AirbyteGithubKysely = new Kysely({
     dialect: new PostgresDialect({ pool }),
   })
 

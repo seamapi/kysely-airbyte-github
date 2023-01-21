@@ -1,14 +1,14 @@
-import { ColumnType, Kysely } from "kysely"
-import * as schema from "zapatos/schema"
-import { Primitive } from "type-fest"
-import { JSONValue } from "zapatos/db"
+import type { ColumnType, Kysely } from "kysely"
+import * as schema from "./zapatos/schema"
+import { type Primitive } from "type-fest"
+import { type JSONValue } from "zapatos/db"
 
 type ZapatosInsertableTypeToPrimitive<T> = Exclude<
   Extract<T, Primitive | Date | JSONValue>,
   symbol
 >
 
-export type ZapatosTableNameToKyselySchema<T extends schema.Table> = {
+type ZapatosTableNameToKyselySchema<T extends schema.Table> = {
   [K in keyof schema.SelectableForTable<T>]: ColumnType<
     ZapatosInsertableTypeToPrimitive<schema.SelectableForTable<T>[K]>,
     K extends keyof schema.InsertableForTable<T>
@@ -20,8 +20,8 @@ export type ZapatosTableNameToKyselySchema<T extends schema.Table> = {
   >
 }
 
-export type KyselySchema = {
+export type AirbyteGithubSchema = {
   readonly [T in schema.Table]: ZapatosTableNameToKyselySchema<T>
 }
 
-export type KyselyDatabaseInstance = Kysely<KyselySchema>
+export type AirbyteGithubKysely = Kysely<AirbyteGithubSchema>

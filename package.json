@@ -2,10 +2,11 @@
   "name": "kysely-airbyte-github",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
     "generate-zapatos-schema": "tsx scripts/generate-zapatos-schema",
-    "test": "ava"
+    "test": "ava",
+    "build": "tsup ./src --dts --sourcemap"
   },
   "repository": {
     "type": "git",
@@ -29,6 +30,7 @@
     "tsup": "^6.5.0",
     "tsx": "^3.12.2",
     "typescript": "^4.9.4",
-    "zapatos": "^6.1.1"
+    "zapatos": "^6.1.1",
+    "zapatos-interface-generator": "^0.1.1"
   }
 }

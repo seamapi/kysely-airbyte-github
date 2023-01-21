@@ -1,4 +1,4 @@
-import * as zg from "zapatos/generate"
+import * as zg from "zapatos-interface-generator/generate"
 import * as dotenv from "dotenv"
 import { getConnectionStringFromEnv } from "pg-connection-from-env"
 
